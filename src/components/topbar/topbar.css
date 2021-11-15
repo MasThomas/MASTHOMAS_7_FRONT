@@ -1,0 +1,55 @@
+.topbarContainer {
+    height: 50px;
+    width: 100%;
+    background-color: #0065FC;
+    display: flex;
+    flex-direction: row;
+    color: #FFFFFF;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.topbarLeft {
+    margin-left : 10px;
+    display: flex;
+    flex: row;
+    align-items: center;
+    flex: 3;
+}
+
+.logoPng, .profileImg {
+    cursor: pointer;
+    object-fit: cover;
+}
+
+.logoName {
+    cursor: pointer;
+}
+
+.topbarCenter {
+    flex : 5;
+}
+
+.topbarRight {
+    flex : 4;
+    margin-right: 10px;
+}
+
+.topbarProfile {
+    justify-content: flex-end;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logoPng, .profileImg, .profileImgContainer {
+    width: 40px;
+    height: 40px;
+}
+
+.profileImgContainer {
+    margin: 0px 10px;
+    border-radius: 50%;
+}
