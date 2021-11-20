@@ -14,9 +14,9 @@
 .topbarLeft {
     margin-left : 10px;
     display: flex;
-    flex: row;
-    align-items: center;
+    flex-direction: row;
     flex: 3;
+    align-items: center;
 }
 
 .logoPng, .profileImg {
@@ -26,6 +26,9 @@
 
 .logoName {
     cursor: pointer;
+    font-size: 20px;
+    color: #FFFFFF;
+    padding-left: 10px;
 }
 
 .topbarCenter {
