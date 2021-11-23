@@ -25,6 +25,7 @@
     border: none;
     width: 80%;
     font-size: 15px;
+    margin-top: 10px;
 }
 
 .shareInput:focus {
@@ -81,6 +82,7 @@
 
 .shareImg {
     width: 100%;
+    height: 300px;
     object-fit: cover;
 }
 
