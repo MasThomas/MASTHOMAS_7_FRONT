@@ -6,40 +6,24 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  // Navigate
+  Navigate
 } from "react-router-dom";
-// import { useContext } from "react";
-// import { AuthContext } from "./context/AuthContext";
+import { useContext } from "react";
+import { AuthContext } from "./context/AuthContext";
 
 function App() {
 
-  // const {user} = useContext(AuthContext)
+  const {user} = useContext(AuthContext)
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/profile/:username" element={<Profile/>}/>
+        <Route exact path="/" element={user ? <Home /> : <Login />} />
+        <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
+        <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
+        <Route path="/profile/:username" element={<Profile/>} />
       </Routes>
     </Router>
     )
-}
+};
 
 export default App;
-
-
-// function App() {
-
-//   const {user} = useContext(AuthContext)
-//   return (
-//     <Router>
-//       <Routes>
-//         <Route exact path="/">{user ? <Home /> : <Login />}</Route>
-//         <Route path="/login">{user ? <Navigate to="/" /> : <Login />}</Route>
-//         <Route path="/register">{user ? <Navigate to="/" /> : <Register />}</Route>
-//         <Route path="/profile/:username" element={<Profile/>}/>
-//       </Routes>
-//     </Router>
-//     )
-// }
