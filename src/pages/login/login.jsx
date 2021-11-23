@@ -4,6 +4,7 @@ import {loginCall} from "../../apiCalls"
 import {AuthContext} from "../../context/AuthContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 export default function Login() {
 
@@ -42,7 +43,7 @@ export default function Login() {
                             ref={password} 
                         />
                         <button className="loginButton" type="submit" disabled={isFetching}>{isFetching ? <FontAwesomeIcon className="fa-spin svg-inline--fa" icon={faSpinner} /> : "Se connecter"}</button>
-                        <button className="loginRegisterButton" type="submit" disabled={isFetching}>{isFetching ? <FontAwesomeIcon className="fa-spin svg-inline--fa" icon={faSpinner} /> : "S'inscrire"}</button>
+                        <Link to = "/register" className="loginRegisterButton" type='button' disabled={isFetching}>{isFetching ? <FontAwesomeIcon className="fa-spin svg-inline--fa" icon={faSpinner} /> : "S'inscrire"}</Link>
                     </form>
                 </div>   
             </div>            
