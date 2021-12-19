@@ -7,17 +7,16 @@ import "./profile.css"
 import {useEffect, useState} from "react";
 import axios from "axios";
 import { useParams } from "react-router";
+import authHeader from "../../authHeader";
 
 export default function Profile() {
 
     const [user, setUser] = useState({});
     const username = useParams().username;
 
-
     useEffect(() => {
         const fetchUser = async () => {
-            const res = await axios.get(`/users/profile?username=${username}`);
-            console.log(res)
+            const res = await axios.get(`/users/profils/${username}`, {headers : authHeader()});
             setUser(res.data)
         };
         fetchUser();
