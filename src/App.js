@@ -2,7 +2,7 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import Register from "./pages/register/Register";
-import Settings from "./pages/settings/Settings"
+import Settings from "./pages/settings/Settings";
 
 import {
   BrowserRouter as Router,
@@ -19,7 +19,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={user ? <Home /> : <Login />} />
+        <Route exact path="/" element={user ? <Home /> : <Navigate to="/login"/>} />
         <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
         <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
         <Route path="/profile/:username" name="profile" element={user ? <Profile/> : <Login/>} />
