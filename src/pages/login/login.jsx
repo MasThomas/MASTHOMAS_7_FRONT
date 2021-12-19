@@ -13,10 +13,10 @@ export default function Login() {
 
     const {isFetching, dispatch} = useContext(AuthContext)
 
-    const handleClick = (e) => {
+    const handleClick = async (e) => {
         e.preventDefault();
-        loginCall({email:email.current.value, password:password.current.value}, dispatch)
-    };
+        await loginCall({email:email.current.value, password:password.current.value}, dispatch)
+    }
 
     return (
         <div className="login">
@@ -46,7 +46,7 @@ export default function Login() {
                         <Link to = "/register" className="loginRegisterButton" type='button' disabled={isFetching}>{isFetching ? <FontAwesomeIcon className="fa-spin svg-inline--fa" icon={faSpinner} /> : "S'inscrire"}</Link>
                     </form>
                 </div>   
-            </div>            
+            </div> 
         </div>
     )
 }
