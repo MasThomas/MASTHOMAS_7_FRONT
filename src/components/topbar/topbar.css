@@ -51,11 +51,11 @@
 .logoPng, .profileImg {
     width: 40px;
     height: 40px;
+    border-radius: 50%;
 }
 
 .profileImgContainer {
     margin: 0px 10px;
-    border-radius: 50%;
 }
 
 .signoutIcon {
@@ -69,4 +69,8 @@
     text-decoration: none;
     color: #FFFFFF;
     margin-right: 20px;
+}
+
+.usernameName {
+    margin-left: 10px;
 }
