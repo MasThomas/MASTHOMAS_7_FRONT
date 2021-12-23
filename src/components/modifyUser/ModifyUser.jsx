@@ -6,6 +6,8 @@ import axios from 'axios';
 import authHeader from '../../authHeader';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCamera, faWindowClose } from "@fortawesome/free-solid-svg-icons"
+import FormData from "form-data"
+
 
 
 export default function ModifyUser() {
@@ -21,14 +23,33 @@ export default function ModifyUser() {
 
     const modifyProfilePictureHandler = async (e) => {
         e.preventDefault()
-        const data = new FormData();
-        const fileName = Date.now() + file.name;
-        data.append("name", fileName);
-        data.append("file", file);
-        try {
-            await axios.post('/upload', file, {headers : authHeader()})
-            await axios.post('/users/profils/profilepicture/' + userId, {imageUrl : fileName}, {headers : authHeader()})
+        if (!file) {
+            toast("Veuillez uploader une image avant de valider la modification")
+        }
+        
+        const form = new FormData();
+        form.append("UserId", userId)
+        const fileName = Date.now() + file.name
+        form.append("name", fileName)
+        form.append("file", file)
+        
 
+        
+        try {
+            await axios.put('/users/profils/profilepicture/'+ userId, form, {headers: authHeader(), "Content-type" : "multipart/form-data"})
+            .then(function(res) {
+                let newUserInfos = {
+                    username: user.username,
+                    companyRole : user.companyRole,
+                    email : user.email,
+                    userId : user.userId,
+                    imageUrl : res.data,
+                    token : user.token
+                }
+                localStorage.setItem('user', JSON.stringify(newUserInfos))
+                toast("Votre photo de profil a bien été mis à jour!")
+                // setTimeout(() => {window.location.reload()}, 3000)
+            })
         } catch(err) {
             toast("Erreur lors de la modification de votre photo de profil, veuillez vérifier votre saisie")
         }
@@ -57,7 +78,7 @@ export default function ModifyUser() {
                     toast(validateUsername)
                     setTimeout(() => {window.location.reload()}, 3000)
                 })
-            } catch (err) {
+            } catch (error) {
                 toast("Erreur lors de la modification de votre nom d'utilisateur, veuillez vérifier votre saisie")
             }
         }
@@ -156,20 +177,20 @@ export default function ModifyUser() {
                     <img src={`${user.imageUrl}`} alt="" className="userProfilePicture"/>
                 </div>
 
-                {file && (
-                    <div className="shareImgContainer">
-                        <img className="shareImg" src={URL.createObjectURL(file)} alt=""/>
-                        <FontAwesomeIcon className="shareCancelImg" icon={faWindowClose} onClick={() => setFile(null)} /> 
-                    </div>
-                )}
-                <form className="userProfilePictureContainer" onSubmit={modifyProfilePictureHandler}>
+                <form className="userProfilePictureContainer" onSubmit={modifyProfilePictureHandler} encType="multipart/form-data">
+                    {file && (
+                        <div className="shareImgContainer">
+                            <img className="shareImg" src={URL.createObjectURL(file)} alt=""/>
+                            <FontAwesomeIcon className="shareCancelImg" icon={faWindowClose} onClick={() => setFile(null)} /> 
+                        </div>
+                    )}
                     <label htmlFor="file">
                         <FontAwesomeIcon className="shareIcon" icon={faCamera} /> 
                         <span className='uploadFile'>Uploader une nouvelle photo de profil</span>
-                        <input style={{display:"none"}} type="file" id="file" accept=".png,.jpg,.jpeg,.gif" onChange={(e) =>setFile(e.target.files[0])}/>
+                        <input style={{display:"none"}} type="file" id="file" accept=".png,.jpg,.jpeg,.gif" onChange={(e) =>setFile(e.target.files[0])} />
                         <br/>
                     </label>
-                    <button className="validateButton" type='submit'>Valider la modification de votre photo de profil</button>
+                    <button className="validateButton" type="submit">Valider la modification de votre photo de profil</button>
                 </form>
 
                 <hr/>
