@@ -1,6 +1,7 @@
 .feed {
     flex: 9;
     height: calc(100vh - 50px);
+    padding-top : 20px;
 }
 
 .feedWrapper {
