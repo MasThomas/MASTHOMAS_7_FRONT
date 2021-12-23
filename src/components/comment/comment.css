@@ -1,0 +1,18 @@
+.commentProfileImg {
+    cursor: pointer;
+    object-fit: cover;
+    width: 19px;
+    height: 19px;
+}
+
+.userInfos {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+
+}
+
+.commentUserUsername{
+    font-size: 15px;
+    padding-left: 5px;
+}
