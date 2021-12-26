@@ -52,7 +52,7 @@ export default function Share() {
                 <form className="shareBottom" onSubmit={submitHandler} encType="multipart/form-data">
                     <div className="shareTop">
                         <img src={user.imageUrl} alt="" className="shareProfileImg" />
-                        <input type="text" placeholder={"Que souhaitez-vous partager " + user.username + "?" } className="shareInput" ref={content}/>
+                        <input type="text" placeholder={"Que souhaitez-vous partager, " + user.username + "?" } className="shareInput" ref={content}/>
                     </div>
                     <hr className="shareHr" />
                     {file && (
@@ -67,8 +67,8 @@ export default function Share() {
                             <span className="shareOptionText">Ajouter une Image</span>
                             <input style={{display:"none"}} type="file" id="file" accept=".png,.jpg,.jpeg,.gif" onChange={(e) =>setFile(e.target.files[0])} />
                         </div>
+                        <button className="shareButton" type="submit">Partager</button>
                     </label>
-                    <button className="shareButton" type="submit">Partager</button>
                 </form>
             </div>
             <ToastContainer
