@@ -48,7 +48,7 @@ export default function ModifyUser() {
                 }
                 localStorage.setItem('user', JSON.stringify(newUserInfos))
                 toast("Votre photo de profil a bien été mis à jour!")
-                // setTimeout(() => {window.location.reload()}, 3000)
+                setTimeout(() => {window.location.reload()}, 3000)
             })
         } catch(err) {
             toast("Erreur lors de la modification de votre photo de profil, veuillez vérifier votre saisie")
@@ -166,6 +166,15 @@ export default function ModifyUser() {
         }
     }
 
+    const deleteAccountHandler = async(e) => {
+        e.preventDefault()
+        const token = authHeader();
+        console.log(userId)
+        await axios.delete('/users/profils/'+userId, {headers:token})
+        localStorage.clear();
+        window.location.reload()
+    }
+
     return (
         <div className="modifyUser">
             <div className="wrapper">
@@ -175,23 +184,24 @@ export default function ModifyUser() {
                 <div className="userProfilePictureContainer">
                     <h2 className="userProfilePictureTitle">Votre Photo de profil</h2>
                     <img src={`${user.imageUrl}`} alt="" className="userProfilePicture"/>
-                </div>
+                
 
-                <form className="userProfilePictureContainer" onSubmit={modifyProfilePictureHandler} encType="multipart/form-data">
-                    {file && (
-                        <div className="shareImgContainer">
-                            <img className="shareImg" src={URL.createObjectURL(file)} alt=""/>
-                            <FontAwesomeIcon className="shareCancelImg" icon={faWindowClose} onClick={() => setFile(null)} /> 
-                        </div>
-                    )}
-                    <label htmlFor="file">
-                        <FontAwesomeIcon className="shareIcon" icon={faCamera} /> 
-                        <span className='uploadFile'>Uploader une nouvelle photo de profil</span>
-                        <input style={{display:"none"}} type="file" id="file" accept=".png,.jpg,.jpeg,.gif" onChange={(e) =>setFile(e.target.files[0])} />
-                        <br/>
-                    </label>
-                    <button className="validateButton" type="submit">Valider la modification de votre photo de profil</button>
-                </form>
+                    <form className="userProfilePictureContainer" onSubmit={modifyProfilePictureHandler} encType="multipart/form-data">
+                        {file && (
+                            <div className="shareImgContainer">
+                                <img className="shareImg" src={URL.createObjectURL(file)} alt=""/>
+                                <FontAwesomeIcon className="shareCancelImg" icon={faWindowClose} onClick={() => setFile(null)} /> 
+                            </div>
+                        )}
+                        <label htmlFor="file">
+                            <FontAwesomeIcon className="shareIcon" icon={faCamera} /> 
+                            <span className='uploadFile'>Uploader une nouvelle photo de profil</span>
+                            <input style={{display:"none"}} type="file" id="file" accept=".png,.jpg,.jpeg,.gif" onChange={(e) =>setFile(e.target.files[0])} />
+                            <br/>
+                        </label>
+                        <button className="validateButton" type="submit">Valider la modification de votre photo de profil</button>
+                    </form>
+                </div>
 
                 <hr/>
 
@@ -233,6 +243,15 @@ export default function ModifyUser() {
                     <input className='modifyInput'  type="password" placeholder='Entrez à nouveau votre nouveau mot de passe' ref={passwordAgainInput}/>
                     <br/>
                     <button className="validateButton" type='submit'>Valider la modification de votre mot de passe</button>
+                </form>
+
+                <hr/>
+
+                <form className="deleteAccountCountainer" onSubmit={deleteAccountHandler}>
+                    <h2 className="deleteAccountTitle">Suppression de votre compte</h2>
+                    <p>La suppression de votre compte est irréversible</p>
+                    <br/>
+                    <button className="validateButton redBtn" type='submit'>Valider la suppression du compte</button>
                 </form>
 
                 <br/><br/><br/>

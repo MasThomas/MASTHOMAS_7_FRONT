@@ -10,9 +10,10 @@
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
+    margin: auto;
 }
 
-.modifyTitle, .userProfilePictureContainer, .userUsernameContainer, .userCompanyRoleContainer, .userEmailContainer, .userPasswordContainer {
+form {
     text-align: center;
     margin: 10px 0;
 }
@@ -22,15 +23,16 @@
 }
 
 .validateButton {
-        border: none;
-        padding: 7px;
-        border-radius: 5px;
-        color: #FFFFFF;
-        background-color: #0065FC;
-        font-weight: 500;
-        margin-right: 20px;
-        cursor: pointer;
-        margin: 10px 0;
+    border: none;
+    width: 400px;
+    padding: 7px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    background-color: #0065FC;
+    font-weight: 500;
+    margin-right: 20px;
+    cursor: pointer;
+    margin: 10px auto;
 }
 
 .modifyInput {
@@ -47,3 +49,22 @@
 hr {
     margin: 25px 0;
 }
+
+form > h2 {
+    padding-bottom: 10px;
+}
+
+.validateButton.redBtn {
+    background-color: #FF0000;
+}
+
+.userProfilePictureContainer {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.userProfilePictureTitle {
+    margin: auto;
+}
+   
