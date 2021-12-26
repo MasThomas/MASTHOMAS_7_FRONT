@@ -3,6 +3,7 @@ import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import Register from "./pages/register/Register";
 import Settings from "./pages/settings/Settings";
+import NotFound from "./pages/NotFound/NotFound";
 
 import {
   BrowserRouter as Router,
@@ -24,6 +25,7 @@ function App() {
         <Route path="/register" element={user ? <Navigate to="/" /> : <Register />} />
         <Route path="/profile/:username" name="profile" element={user ? <Profile/> : <Login/>} />
         <Route path="/profils/settings" element={user ? <Settings/> : <Login/>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
     )

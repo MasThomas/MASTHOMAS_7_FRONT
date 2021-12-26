@@ -1,0 +1,30 @@
+.notFoundWrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.notFoundContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.backHomeBtn {
+    border: none;
+    padding: 7px;
+    border-radius: 5px;
+    color: #FFFFFF;
+    background-color: #0065FC;
+    font-weight: 500;
+    cursor: pointer;
+    margin: 20px auto;
+}
+
+.notFoundText {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.btnLink {
+    margin: 0 auto;
+}
