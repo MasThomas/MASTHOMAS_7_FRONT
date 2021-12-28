@@ -30,7 +30,6 @@ form {
     color: #FFFFFF;
     background-color: #0065FC;
     font-weight: 500;
-    margin-right: 20px;
     cursor: pointer;
     margin: 10px auto;
 }
@@ -67,4 +66,24 @@ form > h2 {
 .userProfilePictureTitle {
     margin: auto;
 }
-   
+
+@media (max-width: 992px) {
+    .modifyUser {
+        margin-right: 0;
+    }
+    .modifyTitle {
+        text-align: center;
+    }
+    .wrapper > form {
+        margin: 0 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .wrapper > form > input {
+        width: 90%;
+    }
+    .validateButton {
+        width: 90%
+    }
+}

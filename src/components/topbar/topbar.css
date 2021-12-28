@@ -74,3 +74,21 @@
 .usernameName {
     margin-left: 10px;
 }
+
+
+@media (max-width: 375px) {
+    .topbarContainer {
+        flex-direction: column;
+        height: 90px;
+        position: initial;
+        padding-bottom: 10px;
+    }
+    .topbarLeft {
+        display: flex;
+        justify-content: center;
+        margin-left: 0;
+    }
+    .topbarProfile {
+        margin-right: 0;
+    }
+}

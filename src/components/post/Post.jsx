@@ -111,10 +111,10 @@ export default function Post({post}) {
             <div className="postWrapper">
                 <div className="postTop">
                     <div className="postTopLeft">
-                        <Link className="postTopLeft" to={`/profile/${user.username}`}>
+                        <Link className="postProfileImgContainer" to={`/profile/${user.username}`}>
                             <img className="postProfileImg" src={user.imageUrl} alt="" />
                         </Link>
-                        <Link className="postTopLeft" to={`/profile/${user.username}`}>
+                        <Link className="postUsernameAndRole" to={`/profile/${user.username}`}>
                             <span className="postUsername">{user.username}</span>
                             <span className="postUserRole">{user.companyRole}</span>
                         </Link>

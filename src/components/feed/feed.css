@@ -7,3 +7,24 @@
 .feedWrapper {
     padding: 20px;
 }
+
+
+@media (max-width: 992px) {
+    .feedWrapper {
+        display: flex;
+        flex-direction: column;
+        width: 95%;
+    }
+}
+
+@media (max-width: 576px) {
+    .feedWrapper {
+        width: 90%;
+    }
+}
+
+@media (max-width: 375px) {
+    .feedWrapper {
+        width: 88%;
+    }
+}

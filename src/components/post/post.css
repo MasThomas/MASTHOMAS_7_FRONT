@@ -11,7 +11,6 @@
 }
 
 .commentWrapper {
-    /* display: none; */
     margin-top: 5px;
     padding: 10px;
     box-shadow: 0px 0px 16px -8px rgba(0,0,0,0.68);
@@ -32,14 +31,13 @@
     padding-left: 10px;
 }
 
-.addComment > .commentInput  {
+.commentInput  {
     display: flex;
     justify-content: space-between;
 }
 
 .postTop {
     display: flex;
-    align-items: center;
     justify-content: space-between;
 }
 
@@ -154,3 +152,48 @@
     border: none;
     cursor: pointer;
 }
+
+
+@media (max-width: 992px) {
+    .post {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .postTop {
+        flex-direction: column-reverse;
+    }
+    .postTopLeft {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .postTopRight {
+        align-self: end;
+    }
+    .postUsernameAndRole {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 375px) {
+    .postTopLeft {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 10px;
+    }
+    .postTopRight {
+        position: absolute;
+        right: 10px;
+    }
+    .postUsername {
+        margin: 0;
+    }
+    .postDate {
+        margin: 0;
+    }
+    .commentInput {
+        flex-direction: column;
+    }
+} 
