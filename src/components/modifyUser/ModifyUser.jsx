@@ -25,33 +25,31 @@ export default function ModifyUser() {
         e.preventDefault()
         if (!file) {
             toast("Veuillez uploader une image avant de valider la modification")
-        }
-        
-        const form = new FormData();
-        form.append("UserId", userId)
-        const fileName = Date.now() + file.name
-        form.append("name", fileName)
-        form.append("file", file)
-        
-
-        
-        try {
-            await axios.put('/users/profils/profilepicture/'+ userId, form, {headers: authHeader(), "Content-type" : "multipart/form-data"})
-            .then(function(res) {
-                let newUserInfos = {
-                    username: user.username,
-                    companyRole : user.companyRole,
-                    email : user.email,
-                    userId : user.userId,
-                    imageUrl : res.data,
-                    token : user.token
-                }
-                localStorage.setItem('user', JSON.stringify(newUserInfos))
-                toast("Votre photo de profil a bien été mis à jour!")
-                setTimeout(() => {window.location.reload()}, 3000)
-            })
-        } catch(err) {
-            toast("Erreur lors de la modification de votre photo de profil, veuillez vérifier votre saisie")
+        } else {        
+            const form = new FormData();
+            form.append("UserId", userId)
+            const fileName = Date.now() + file.name
+            form.append("name", fileName)
+            form.append("file", file)
+            
+            try {
+                await axios.put('/users/profils/profilepicture/'+ userId, form, {headers: authHeader(), "Content-type" : "multipart/form-data"})
+                .then(function(res) {
+                    let newUserInfos = {
+                        username: user.username,
+                        companyRole : user.companyRole,
+                        email : user.email,
+                        userId : user.userId,
+                        imageUrl : res.data,
+                        token : user.token
+                    }
+                    localStorage.setItem('user', JSON.stringify(newUserInfos))
+                    toast("Votre photo de profil a bien été mis à jour!")
+                    setTimeout(() => {window.location.reload()}, 3000)
+                })
+            } catch(err) {
+                toast("Erreur lors de la modification de votre photo de profil, veuillez vérifier votre saisie")
+            }
         }
     }
 
@@ -188,8 +186,8 @@ export default function ModifyUser() {
 
                     <form className="userProfilePictureContainer" onSubmit={modifyProfilePictureHandler} encType="multipart/form-data">
                         {file && (
-                            <div className="shareImgContainer">
-                                <img className="shareImg" src={URL.createObjectURL(file)} alt=""/>
+                            <div className="modifyImgContainer">
+                                <img className="modifyImg" src={URL.createObjectURL(file)} alt=""/>
                                 <FontAwesomeIcon className="shareCancelImg" icon={faWindowClose} onClick={() => setFile(null)} /> 
                             </div>
                         )}

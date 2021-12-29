@@ -1,8 +1,11 @@
+
+
 .modifyUser {
     flex: 9;
     height: calc(100vh - 50px);
     padding-top : 40px;
-    margin-right: 170px;
+    margin: 0 170px;
+
 }
 
 .userProfilePicture {
@@ -59,12 +62,27 @@ form > h2 {
 
 .userProfilePictureContainer {
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    align-self: center;
+}
+
+.modifyImg {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .userProfilePictureTitle {
     margin: auto;
+}
+
+.modifyImgContainer {
+	padding: 0 20px 10px 20px;
+	position: relative;
+	text-align: center;
+    max-width: 500px;
+    max-height: 300px;
 }
 
 @media (max-width: 992px) {
